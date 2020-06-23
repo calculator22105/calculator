@@ -4,7 +4,7 @@
 #include "math.h"
 #define PI 3.14159265
 
-ааааааааааааааааааааааааааА
+Привет
 
 double firstNum;
 bool userIsTypingSecondNumber = false;
