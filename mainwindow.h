@@ -18,14 +18,14 @@ public:
 private:
     Ui::MainWindow *ui;
 private slots:    //
-    void digit_pressed();
-    void on_pushButton_decimal_clicked();
-    void unary_operation_pressed();
-
-    void on_pushButton_clear_clicked();
-    void on_pushButton_equals_clicked();
-    void binary_operation_pressed();
-
-
+    void digit_pressed();                 // при нажатии цифры
+    void on_pushButton_decimal_clicked(); // при нажатии "." (десятичной дроби)
+    void unary_operation_pressed();       // для унарных операций
+    void on_pushButton_clear_clicked();   // для кнопки очистки "С"
+    void on_pushButton_equals_clicked();  // для кнопки "="
+    void binary_operation_pressed();      // для бинарных операций
+    void on_pushButton_back_clicked();    // для удаления предыдущего символа
+    void on_pushButton_deg_clicked();     // для перевода значений из радиан в градусы
 };
+
 #endif // MAINWINDOW_H
