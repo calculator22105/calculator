@@ -333,7 +333,7 @@ void MainWindow::on_pushButton_clear_clicked()
 }
 
 /* Если нажали кнопку равно */
-void MainWindow::on_pushButton_equals_clicked()
+void MainWindow::on_pushButton_equals_clicked() {
     
     double labelNumber, secondNum;
     QString newLabel;
