@@ -14,9 +14,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    connect(ui->pushButton_0,SIGNAL(clicked()),this,SLOT(digit_pressed())); // связь с кнопкой осуществляется с помощью connect, из формы (ui)
-    connect(ui->pushButton_1,SIGNAL(clicked()),this,SLOT(digit_pressed())); // где находится кнопка pushButton_0, если эта кнопка получила сигнал
-    connect(ui->pushButton_2,SIGNAL(clicked()),this,SLOT(digit_pressed())); // на нее нажали (clicked), то переходим к слоту digit_pressed
+    /* Если был получен сигнал от кнопки 0-9, то переходим к digit_pressed() */
+    connect(ui->pushButton_0,SIGNAL(clicked()),this,SLOT(digit_pressed())); 
+    connect(ui->pushButton_1,SIGNAL(clicked()),this,SLOT(digit_pressed())); 
+    connect(ui->pushButton_2,SIGNAL(clicked()),this,SLOT(digit_pressed())); 
     connect(ui->pushButton_3,SIGNAL(clicked()),this,SLOT(digit_pressed()));
     connect(ui->pushButton_4,SIGNAL(clicked()),this,SLOT(digit_pressed()));
     connect(ui->pushButton_5,SIGNAL(clicked()),this,SLOT(digit_pressed()));
@@ -25,7 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pushButton_8,SIGNAL(clicked()),this,SLOT(digit_pressed()));
     connect(ui->pushButton_9,SIGNAL(clicked()),this,SLOT(digit_pressed()));
 
-
+    /* Если был получен сигнал от унарных математических операций, то переходим к unary_operation_pressed() */  
     connect(ui->pushButton_plusMinus,SIGNAL(clicked()),this,SLOT(unary_operation_pressed()));
     connect(ui->pushButton_percent,SIGNAL(clicked()),this,SLOT(unary_operation_pressed()));
     connect(ui->pushButton_sqrt,SIGNAL(clicked()), this, SLOT(unary_operation_pressed()));
@@ -36,6 +37,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pushButton_abs,SIGNAL(clicked()), this, SLOT(unary_operation_pressed()));
     connect(ui->pushButton_log,SIGNAL(clicked()), this, SLOT(unary_operation_pressed()));
 
+    /* Если был получен сигнал от бинарных операций, то переходим к binary_operation_pressed() */ 
     connect(ui->pushButton_add,SIGNAL(clicked()),this,SLOT(binary_operation_pressed()));
     connect(ui->pushButton_subtract,SIGNAL(clicked()),this,SLOT(binary_operation_pressed()));
     connect(ui->pushButton_multiply,SIGNAL(clicked()),this,SLOT(binary_operation_pressed()));
@@ -50,8 +52,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->pushButton_powe->setCheckable(true);
     ui->pushButton_percent->setCheckable(true);
 
-
-    ui->pushButton_powe->setText("x\u207F"); // установили текст в кнопке x^n
+    /* Установили текст в кнопке x^n */
+    ui->pushButton_powe->setText("x\u207F"); 
 }
 
 MainWindow::~MainWindow()
@@ -59,51 +61,66 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::digit_pressed() // нажата цифра
+/* Если нажата цифра */
+void MainWindow::digit_pressed() 
 {
- QPushButton * button = (QPushButton*)sender(); // получаем информацию об сигнале
+ 
+ /* sender возвращает указатель на объект, объектом является кнопка, на которую нажали */
+ QPushButton * button = (QPushButton*)sender(); 
 
  double labelNumber;
  QString newLabel;
 
  if((ui->pushButton_add->isChecked() || ui->pushButton_subtract->isChecked() ||
-         ui->pushButton_multiply->isChecked() || ui->pushButton_divide->isChecked() || ui->pushButton_powe->isChecked() ) && (!userIsTypingSecondNumber)) // если нажат + или - или
- {                                                                                                                       // * или / и НЕ
-   labelNumber = button->text().toDouble();  // labelNumber равен введенному числу
-   userIsTypingSecondNumber = true;  //
-   newLabel = QString::number(labelNumber,'g',15);  // число длиной не больше 15. QString предоставляет строку символов
+         ui->pushButton_multiply->isChecked() || ui->pushButton_divide->isChecked() || ui->pushButton_powe->isChecked() ) && (!userIsTypingSecondNumber)) 
+   
+   /* Текст с кнопки преобразуем к типу double */  
+   labelNumber = button->text().toDouble();  
+   userIsTypingSecondNumber = true;
+   /* Присваиваем отформатированную строку формата 'g' длbной не более 15 символов */
+   newLabel = QString::number(labelNumber,'g',15);
 
  }
      else
  {
-     if (ui->label->text().contains('.')  && button->text() == "0")  // если содержится точка и
+     /* Если в label '.' и нажата кнопка 0 */
+     if (ui->label->text().contains('.')  && button->text() == "0")  
      {
+        /* Тогда newLabel равен '.0' */
         newLabel = ui->label->text() + button->text();
      }
      else
      {
+       /* Иначе если число от 0-9, выводим его */
        labelNumber = (ui->label->text() + button->text()).toDouble();
-        newLabel = QString::number(labelNumber,'g',15);
+       newLabel = QString::number(labelNumber,'g',15);
          }
      }
-     ui->label->setText(newLabel);
+       /* Выводим значение переменной newLabel в label */
+       ui->label->setText(newLabel);
 }
 
-void MainWindow::on_pushButton_decimal_clicked() //
+/* При нажатии десятичной дроби */
+void MainWindow::on_pushButton_decimal_clicked() 
 {
+  /* Если label не содержит '.' */
   if (!ui->label->text().contains('.'))
   {
+   /* Выводим текст с точкой */   
    ui->label->setText(ui->label->text() + ".");
   }
 }
 
-void MainWindow::unary_operation_pressed() // нажата одинарная операция
+/* Если нажата унарная операция */
+void MainWindow::unary_operation_pressed() 
 {
     double labelNumber;
     QString newLabel;
 
-    QPushButton * button = (QPushButton*) sender();  // получаем информацию об сигнале
-    if (button->text() == "+/-")   // если нажата "+/-"
+    QPushButton * button = (QPushButton*) sender(); 
+    
+    /* Если кнопка содержит текст '+/-' */
+    if (button->text() == "+/-")   
     {
        labelNumber = ui->label->text().toDouble();   // получаем число которое у нас написано в label  записываем его в labelNumber
        labelNumber = labelNumber * -1;   // умножаем это число на -1
