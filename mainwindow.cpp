@@ -76,7 +76,7 @@ void MainWindow::digit_pressed()
  /* Если установлена одна из клавиш "+", "-", "÷", "×", "x^n" и пользователь вводит второе число */
  if((ui->pushButton_add->isChecked() || ui->pushButton_subtract->isChecked() ||
      ui->pushButton_multiply->isChecked() || ui->pushButton_divide->isChecked() ||
-     ui->pushButton_powe->isChecked() ) && (!userIsTypingSecondNumber)) 
+     ui->pushButton_powe->isChecked() ) && (!userIsTypingSecondNumber)) {
    
    /* Текст с кнопки преобразуем к типу double */  
    labelNumber = button->text().toDouble();  
