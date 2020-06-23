@@ -374,7 +374,7 @@ void MainWindow::on_pushButton_equals_clicked() {
         ui->label->setText(newLabel);  
         ui->pushButton_multiply->setChecked(false);  
     }
-        ui->top_label->setText(QString::number(firstNum) + "*" + QString::number(secondNum));
+        ui->top_label->setText(QString::number(firstNum) + "×" + QString::number(secondNum));
     }
     /* Если нажата кнопка '/' */
     else if (ui->pushButton_divide->isChecked())  
@@ -392,7 +392,7 @@ void MainWindow::on_pushButton_equals_clicked() {
         ui->pushButton_divide->setChecked(false);  
         }
     }
-        ui->top_label->setText(QString::number(firstNum) + "/" + QString::number(secondNum));
+        ui->top_label->setText(QString::number(firstNum) + "÷" + QString::number(secondNum));
     }
         
 
