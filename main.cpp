@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
-    w.setFixedSize(w.size());
+    w.setFixedSize(w.size());         // для фиксация размера главного окна
 
     return a.exec();
 }
