@@ -48,7 +48,7 @@
  qproperty-alignment: 'AlignVCenter | AlignRight';
  border: 1px solid gray;
 background-color : #FDE2E2;
-border-radius: 5px
+border-radius: 5px;
 }</string>
     </property>
     <property name="text">
@@ -542,7 +542,7 @@ stop: 0 #F3184B, stop: 1 #FF9AFF);
  qproperty-alignment: 'AlignVCenter | AlignRight';
  border: 1px solid gray;
 background-color : #FDE2E2;
-border-radius: 5px
+border-radius: 5px;
 }</string>
     </property>
     <property name="text">
@@ -745,7 +745,7 @@ stop: 0 #F3184B, stop: 1 #FF9AFF);
 }</string>
     </property>
     <property name="text">
-     <string>&lt;-</string>
+     <string>←</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_fraction">
