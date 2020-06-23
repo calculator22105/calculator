@@ -344,6 +344,7 @@ void MainWindow::on_pushButton_equals_clicked()
     /* Если нажата кнопка '+' */
     if (ui->pushButton_add->isChecked())  
     {
+        {
         /* Складываем первое и второе число */
         labelNumber = firstNum + secondNum;  
         newLabel = QString::number(labelNumber,'g', 15); 
@@ -351,25 +352,34 @@ void MainWindow::on_pushButton_equals_clicked()
         /* Дезактивируем кнопку */
         ui->pushButton_add->setChecked(false); 
     }
+        ui->top_label->setText(QString::number(firstNum) + "+" + QString::number(secondNum));
+    }
      /* Если нажата кнопка '-' */
     else if (ui->pushButton_subtract->isChecked()) 
     {
+        {
         labelNumber = firstNum - secondNum;  
         newLabel = QString::number(labelNumber,'g', 15); 
         ui->label->setText(newLabel);  
         ui->pushButton_subtract->setChecked(false); 
     }
+         ui->top_label->setText(QString::number(firstNum) + "-" + QString::number(secondNum));
+    }
     /* Если нажата кнопка '*' */
     else if (ui->pushButton_multiply->isChecked()) 
     {
+        {
         labelNumber = firstNum * secondNum; 
         newLabel = QString::number(labelNumber,'g', 15); 
         ui->label->setText(newLabel);  
         ui->pushButton_multiply->setChecked(false);  
     }
+        ui->top_label->setText(QString::number(firstNum) + "*" + QString::number(secondNum));
+    }
     /* Если нажата кнопка '/' */
     else if (ui->pushButton_divide->isChecked())  
     {
+        {
         /* Проверка, если второе число выводим сообщение об ошибке */
         if (secondNum == 0) {   
            ui->label->setText("You cannot divide by 0!"); 
@@ -382,18 +392,23 @@ void MainWindow::on_pushButton_equals_clicked()
         ui->pushButton_divide->setChecked(false);  
         }
     }
+        ui->top_label->setText(QString::number(firstNum) + "/" + QString::number(secondNum));
+    }
+        
 
     /* Если нажата кнопка 'x^n' */
     else if (ui->pushButton_powe->isChecked())   
     {
+        {
         labelNumber = pow (firstNum, secondNum);
         newLabel = QString::number(labelNumber,'g', 15); 
         ui->label->setText(newLabel); 
         ui->pushButton_powe->setChecked(false);
 
     }
+        ui->top_label->setText("");
+    }
 
-    ui->top_label->setText("");
     userIsTypingSecondNumber = false;
 }
 
