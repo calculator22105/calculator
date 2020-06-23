@@ -122,82 +122,88 @@ void MainWindow::unary_operation_pressed()
     /* Если кнопка содержит текст '+/-' */
     if (button->text() == "+/-")   
     {
-       labelNumber = ui->label->text().toDouble();   // получаем число которое у нас написано в label  записываем его в labelNumber
-       labelNumber = labelNumber * -1;   // умножаем это число на -1
-       newLabel = QString::number(labelNumber,'g',15);  // число длиной не больше 15. QString предоставляет строку символов
-       ui->label->setText(newLabel);  // выводим на label полученое число
+       /* Присваиваем labelNumber введенное значение */
+       labelNumber = ui->label->text().toDouble();
+       /* Меняем знак на противоположный */
+       labelNumber = labelNumber * -1;
+       newLabel = QString::number(labelNumber,'g',15); 
+       /* Выводим в label */ 
+       ui->label->setText(newLabel); 
     }
-    if (button->text() == "%")  // если нажат "%"
+    /* Если кнопка содержит текст '%' */
+    if (button->text() == "%")  
     {
-      labelNumber = ui->label->text().toDouble(); // получаем число которое у нас написано в label и записываем его в labelNumber
-       labelNumber = labelNumber * 0.01;     // умножаем это число на 0.01
-       newLabel = QString::number(labelNumber,'g',15); //выводим число длиной не больше 15, g - формат. QString предоставляет строку символов
-       ui->label->setText(newLabel);  // выводим на label полученое число
+       labelNumber = ui->label->text().toDouble(); 
+       /* Высчитываем процент числа */
+       labelNumber = labelNumber * 0.01;     
+       newLabel = QString::number(labelNumber,'g',15); 
+       ui->label->setText(newLabel);  
    }
+    /* Если кнопка содержит текст '√' */
     if (button->text() == "√")
     {
-        labelNumber = ui->label->text().toDouble();// получаем число которое у нас написано в label и записываем его в labelNumber
+        labelNumber = ui->label->text().toDouble();
+        /* Выводим в top_label знак корня и число */
         ui->top_label->setText("√" + ui->label->text());
-        labelNumber = qSqrt(labelNumber);     // находим корень
-        newLabel = QString::number(labelNumber,'g',15); //выводим число длиной не больше 15, g - формат. QString предоставляет строку символов
-        ui->label->setText(newLabel);  // выводим на label полученое число
+        /* Находим корень числа */
+        labelNumber = qSqrt(labelNumber);    
+        newLabel = QString::number(labelNumber,'g',15); 
+        ui->label->setText(newLabel); 
     }
-    if (button->text() == "^")  // если нажат "^"
+    /* Если кнопка содержит текст 'x²' */
+    if (button->text() == "x²")  
     {
        double a = 2;
-       labelNumber = ui->label->text().toDouble(); // получаем число которое у нас написано в label и записываем его в labelNumber
-       double labelN = pow (labelNumber, a);     // умножаем это число на 0.01
-       newLabel = QString::number(labelN,'g',15); //выводим число длиной не больше 15, g - формат. QString предоставляет строку символов
-       ui->label->setText(newLabel);  // выводим на label полученое число
+       labelNumber = ui->label->text().toDouble();
+       /* Находим число в степени 2 */
+       double labelN = pow (labelNumber, a);     
+       newLabel = QString::number(labelN,'g',15); 
+       ui->label->setText(newLabel);  
     }
+    /* Если кнопка содержит текст 'cos' */
     if (button->text() == "cos")
     {
-        labelNumber = ui->label->text().toDouble();// получаем число которое у нас написано в label и записываем его в labelNumber
+        labelNumber = ui->label->text().toDouble();
         ui->top_label->setText("cos" + ui->label->text());
         double a = labelNumber;
-        double labelN = cos(a);     // находим корень
-        newLabel = QString::number(labelN,'g',8); //выводим число длиной не больше 15, g - формат. QString предоставляет строку символов
-        ui->label->setText(newLabel);  // выводим на label полученое число
+        double labelN = cos(a);    
+        newLabel = QString::number(labelN,'g',8); 
+        ui->label->setText(newLabel);  
     }
+    /* Если кнопка содержит текст 'sin' */
     if (button->text() == "sin")
     {
-        labelNumber = ui->label->text().toDouble();// получаем число которое у нас написано в label и записываем его в labelNumber
+        labelNumber = ui->label->text().toDouble();r
         ui->top_label->setText("sin" + ui->label->text());
         double a = labelNumber;
-        double labelN = sin((a * PI) / 180);     // находим корень
-        newLabel = QString::number(labelN,'g',8); //выводим число длиной не больше 15, g - формат. QString предоставляет строку символов
-        ui->label->setText(newLabel);  // выводим на label полученое число
+        double labelN = sin((a * PI) / 180);    
+        newLabel = QString::number(labelN,'g',8); 
+        ui->label->setText(newLabel);  
     }
+    /* Если кнопка содержит текст 'tan' */
     if (button->text() == "tan")
     {
-        labelNumber = ui->label->text().toDouble();// получаем число которое у нас написано в label и записываем его в labelNumber
+        labelNumber = ui->label->text().toDouble();
         ui->top_label->setText("tan" + ui->label->text());
         double a = labelNumber;
-        double labelN = tan((a * PI) / 180);     // находим корень
-        newLabel = QString::number(labelN,'g',8); //выводим число длиной не больше 15, g - формат. QString предоставляет строку символов
-        ui->label->setText(newLabel);  // выводим на label полученое число
+        double labelN = tan((a * PI) / 180);     
+        newLabel = QString::number(labelN,'g',8);
+        ui->label->setText(newLabel); 
     }
-    if (button->text() == "|x|")
-    {
-        labelNumber = ui->label->text().toDouble();// получаем число которое у нас написано в label и записываем его в labelNumber
-        ui->top_label->setText("|" + ui->label->text() + "|");
-        double a = labelNumber;
-        double labelN = abs(a);     // находим корень
-        newLabel = QString::number(labelN,'g',8); //выводим число длиной не больше 15, g - формат. QString предоставляет строку символов
-        ui->label->setText(newLabel);  // выводим на label полученое число
-    }
+    /* Если кнопка содержит текст 'log' */
     if (button->text() == "log")
     {
-        labelNumber = ui->label->text().toDouble();// получаем число которое у нас написано в label и записываем его в labelNumber
+        labelNumber = ui->label->text().toDouble();
         ui->top_label->setText("log" + ui->label->text());
         double a = labelNumber;
-        double labelN = log(a);     // находим корень
-        newLabel = QString::number(labelN,'g',8); //выводим число длиной не больше 15, g - формат. QString предоставляет строку символов
-        ui->label->setText(newLabel);  // выводим на label полученое число
+        double labelN = log(a);     
+        newLabel = QString::number(labelN,'g',8); 
+        ui->label->setText(newLabel);  
     }
 }
 
-void MainWindow::on_pushButton_clear_clicked()  // нажали кнопку очистить
+/* Если нажали кнопку очистить */
+void MainWindow::on_pushButton_clear_clicked()  
 {
     /* Указываем, что кнопки "+", "-", "÷" и"×" являются не активными */
     ui->pushButton_add->setChecked(false);
@@ -209,74 +215,84 @@ void MainWindow::on_pushButton_clear_clicked()  // нажали кнопку о�
 
 
     userIsTypingSecondNumber = false;
-
-    ui->label->setText("0"); // выводим в label 0
+    /* Помещаем в label "0" top_label */
+    ui->label->setText("0"); 
     ui->top_label->setText("");
 
 }
 
-void MainWindow::on_pushButton_equals_clicked()  // нажали кнопку равно
-{
+/* Если нажали кнопку равно */
+void MainWindow::on_pushButton_equals_clicked()
+    
     double labelNumber, secondNum;
     QString newLabel;
+    
+    /* secondNum равен второму введенному числу */
+    secondNum = ui->label->text().toDouble(); 
 
-    secondNum = ui->label->text().toDouble(); // secondNum равен последнему введенному числу в label
-
-    if (ui->pushButton_add->isChecked())  // если сложение
+    /* Если нажата кнопка '+' */
+    if (ui->pushButton_add->isChecked())  
     {
-        labelNumber = firstNum + secondNum;  // labelNumber равен сумме первого числа и второго(secondNum)
-        newLabel = QString::number(labelNumber,'g', 15); // число длиной не больше 15, g - формат. QString предоставляет строку символов
-        ui->label->setText(newLabel); // выводим число в label
-        ui->pushButton_add->setChecked(false); // дезактивирует кнопку
+        /* Складываем первое и второе число */
+        labelNumber = firstNum + secondNum;  
+        newLabel = QString::number(labelNumber,'g', 15); 
+        ui->label->setText(newLabel);
+        /* Дезактивируем кнопку */
+        ui->pushButton_add->setChecked(false); 
     }
-    else if (ui->pushButton_subtract->isChecked()) // если вычитание
+     /* Если нажата кнопка '-' */
+    else if (ui->pushButton_subtract->isChecked()) 
     {
-        labelNumber = firstNum - secondNum;  // labelNumber равен разности первого числа и второго(secondNum)
-        newLabel = QString::number(labelNumber,'g', 15); // число длиной не больше 15, g - формат. QString предоставляет строку символов
-        ui->label->setText(newLabel);  // выводим число в label
-        ui->pushButton_subtract->setChecked(false); // дезактивирует кнопку
+        labelNumber = firstNum - secondNum;  
+        newLabel = QString::number(labelNumber,'g', 15); 
+        ui->label->setText(newLabel);  
+        ui->pushButton_subtract->setChecked(false); 
     }
-    else if (ui->pushButton_multiply->isChecked()) // если умножение
+    /* Если нажата кнопка '*' */
+    else if (ui->pushButton_multiply->isChecked()) 
     {
-        labelNumber = firstNum * secondNum; // labelNumber равен произведению первого числа и второго(secondNum)
-        newLabel = QString::number(labelNumber,'g', 15); // число длиной не больше 15, g - формат. QString предоставляет строку символов
-        ui->label->setText(newLabel);  // выводим число в label
-        ui->pushButton_multiply->setChecked(false);  // дезактивирует кнопку
+        labelNumber = firstNum * secondNum; 
+        newLabel = QString::number(labelNumber,'g', 15); 
+        ui->label->setText(newLabel);  
+        ui->pushButton_multiply->setChecked(false);  
     }
-    else if (ui->pushButton_divide->isChecked())  // если деление
+    /* Если нажата кнопка '/' */
+    else if (ui->pushButton_divide->isChecked())  
     {
-        if (secondNum == 0) {   // если делим на 0
-           ui->label->setText("Нельзя делить на ноль "); // вывести ошибку
-        }
+        /* Проверка, если второе число выводим сообщение об ошибке */
+        if (secondNum == 0) {   
+           ui->label->setText("Нельзя делить на ноль "); /
+        }       
         else {
-        labelNumber = firstNum / secondNum;  // если деление
-        newLabel = QString::number(labelNumber,'g', 15);  // число длиной не больше 15, g - формат. QString предоставляет строку символов
-        ui->label->setText(newLabel); // выводим число в label
-        ui->pushButton_divide->setChecked(false);  // дезактивирует кнопку
+        labelNumber = firstNum / secondNum;  
+        newLabel = QString::number(labelNumber,'g', 15);  
+        ui->label->setText(newLabel); 
+        ui->pushButton_divide->setChecked(false);  
         }
     }
-    else if (ui->pushButton_powe->isChecked())   // если возводим в степень
+    /* Если нажата кнопка 'x^n' */
+    else if (ui->pushButton_powe->isChecked())   
     {
         labelNumber = pow (firstNum, secondNum);
-        newLabel = QString::number(labelNumber,'g', 15); // число длиной не больше 15, g - формат. QString предоставляет строку символов
-        ui->label->setText(newLabel); // выводим число в label
+        newLabel = QString::number(labelNumber,'g', 15); 
+        ui->label->setText(newLabel); 
         ui->pushButton_powe->setChecked(false);
 
     }
 
-    ui->top_label->setText(""); // выводим в верхний label ничего
+    ui->top_label->setText("");
     userIsTypingSecondNumber = false;
 }
-
-void MainWindow::binary_operation_pressed() // бинарная операция нажата
+/* Если нажата бинарная операция */
+void MainWindow::binary_operation_pressed() 
 {
-    QPushButton * button = (QPushButton*) sender(); // получаем информацию о сигнале
-
-    firstNum = ui->label->text().toDouble();  // firstNum равен первому введенному числу
-    ui->top_label->setText(ui->label->text()); // помещаем его в top_label
-    ui->label->setText("0");  // в label ставим 0
-
-    button->setChecked(true); // активируем нажатую кнопку
+    QPushButton * button = (QPushButton*) sender(); 
+    /* firstNum равен первому введенному числу */
+    firstNum = ui->label->text().toDouble();  
+    ui->top_label->setText(ui->label->text()); 
+    ui->label->setText("0");  
+    /* Активируем нажатую кнопку */
+    button->setChecked(true); 
 
 
 
