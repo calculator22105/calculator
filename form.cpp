@@ -187,13 +187,14 @@ void Form::unary_operation_pressed()
         }
     }
     /* Если кнопка содержит текст 'x²' */
-    if (button->text() == "x²")  
+    if (button->text() == "x²")
     {
        const double a = 2;
-       labelNumber = ui->label->text().toDouble();
-       labelNumber = pow(labelNumber, a);                         // Находим число в степени 2
+       double labelNum = ui->label->text().toDouble();
+       labelNumber = pow(labelNum, a);                         // Находим число в степени 2
 
        newLabel = QString::number(labelNumber, 'g', 15);
+       ui->top_label->setText(QString::number(labelNum) + "²");
        ui->label->setText(newLabel);
     }
     
