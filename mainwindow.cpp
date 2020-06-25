@@ -406,7 +406,7 @@ void MainWindow::on_pushButton_equals_clicked() {
         ui->pushButton_powe->setChecked(false);
 
     }
-        ui->top_label->setText("");
+        ui->top_label->setText(QString::number(firstNum) + "^" + QString::number(secondNum));
     }
 
     userIsTypingSecondNumber = false;
