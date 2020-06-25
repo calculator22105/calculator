@@ -1,5 +1,5 @@
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "form.h"
+#include "ui_form.h"
 #include <cmath>   
 
 #define PI 3.14159265
@@ -395,7 +395,7 @@ void Form::on_pushButton_equals_clicked() {
         ui->pushButton_divide->setChecked(false);  
         }
     }
-        ui->top_label->setText(QString::number(firstNum) + "÷" + QString::number(secondNum));
+        ui->top_label->setText(QString::number(firstNum2) + "÷" + QString::number(secondNum));
     }
         
 
@@ -409,7 +409,7 @@ void Form::on_pushButton_equals_clicked() {
         ui->pushButton_powe->setChecked(false);
 
     }
-        ui->top_label->setText(QString::number(firstNum) + "^" + QString::number(secondNum));
+        ui->top_label->setText(QString::number(firstNum2) + "^" + QString::number(secondNum));
     }
 
     userIsTypingSecondNumber2 = false;
