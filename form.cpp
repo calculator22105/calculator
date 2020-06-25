@@ -354,7 +354,7 @@ void Form::on_pushButton_equals_clicked() {
         /* Дезактивируем кнопку */
         ui->pushButton_add->setChecked(false); 
     }
-        ui->top_label->setText(QString::number(firstNum) + "+" + QString::number(secondNum));
+        ui->top_label->setText(QString::number(firstNum2) + "+" + QString::number(secondNum));
     }
      /* Если нажата кнопка '-' */
     else if (ui->pushButton_subtract->isChecked()) 
@@ -365,7 +365,7 @@ void Form::on_pushButton_equals_clicked() {
         ui->label->setText(newLabel);  
         ui->pushButton_subtract->setChecked(false); 
     }
-         ui->top_label->setText(QString::number(firstNum) + "-" + QString::number(secondNum));
+         ui->top_label->setText(QString::number(firstNum2) + "-" + QString::number(secondNum));
     }
     /* Если нажата кнопка '*' */
     else if (ui->pushButton_multiply->isChecked()) 
@@ -376,7 +376,7 @@ void Form::on_pushButton_equals_clicked() {
         ui->label->setText(newLabel);  
         ui->pushButton_multiply->setChecked(false);  
     }
-        ui->top_label->setText(QString::number(firstNum) + "×" + QString::number(secondNum));
+        ui->top_label->setText(QString::number(firstNum2) + "×" + QString::number(secondNum));
     }
     /* Если нажата кнопка '/' */
     else if (ui->pushButton_divide->isChecked())  
