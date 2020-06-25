@@ -231,6 +231,9 @@ void MainWindow::binary_operation_pressed()
     ui->label->setText("0");  
     /* Активируем нажатую кнопку */
     button->setChecked(true); 
+    
+    if (ui->top_label->text().length() )
+    ui->top_label->setText(ui->top_label->text() + button->text());
 
     userIsTypingSecondNumber = false; 
 }
