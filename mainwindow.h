@@ -29,7 +29,6 @@ private slots:
     void on_pushButton_equals_clicked();  // для кнопки "="
     void binary_operation_pressed();      // для бинарных операций
     void on_pushButton_back_clicked();    // для удаления предыдущего символа
-    void on_pushButton_deg_clicked();     // для перевода значений из радиан в градусы
     
     void on_radioButton_clicked();        // для переключения на другое окно
 };
