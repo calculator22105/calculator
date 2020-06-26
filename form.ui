@@ -505,7 +505,7 @@ stop: 0 #F3184B, stop: 1 #FF9AFF);
 }</string>
    </property>
    <property name="text">
-    <string>&lt;-</string>
+    <string>←</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_6">
